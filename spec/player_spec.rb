@@ -39,5 +39,20 @@ describe Player do
       player.frames[2] = double :frame, ball_1_pins: 5, total_pins: 5
       expect(player.current_score).to eq(20)
     end
+
+    it "returns correctly after two strikes" do
+      player = Player.new("Partario")
+      player.frames[1] = double :frame, modifier: :strike, total_pins: 10
+      player.frames[2] = double :frame, modifier: :strike, total_pins: 10
+      expect(player.current_score).to eq(30)
+    end
+
+    it "returns correctly after 3 strikes" do
+      player = Player.new("Partario")
+      player.frames[1] = double :frame, modifier: :strike, total_pins: 10
+      player.frames[2] = double :frame, modifier: :strike, total_pins: 10
+      player.frames[3] = double :frame, modifier: :strike, total_pins: 10
+      expect(player.current_score).to eq(60)
+    end
   end
 end

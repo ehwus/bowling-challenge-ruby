@@ -16,6 +16,10 @@ class Player
         total += frame.ball_1_pins if @frames[round_number - 1].modifier == :spare
       end
 
+      if round_number > 2
+        total += frame.total_pins if @frames[round_number - 2].modifier == :strike
+      end
+
       total += frame.total_pins
     end
 
