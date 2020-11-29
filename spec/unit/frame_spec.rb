@@ -30,4 +30,17 @@ describe Frame do
       expect(example_frame.modifier).to eq(nil)
     end
   end
+
+  describe "#total_pins" do
+    it "returns 0 if there are no pins" do
+      expect(Frame.new.total_pins).to eq(0)
+    end
+
+    it "returns correctly when there are two results" do
+      example_frame = Frame.new
+      example_frame.ball_1_pins = 0
+      example_frame.ball_2_pins = 4
+      expect(example_frame.total_pins).to eq(4)
+    end
+  end
 end
