@@ -10,13 +10,13 @@ class Player
   def current_score
     total = 0
 
-    @frames.each do |frame, outcome|
-      if frame > 1
-        total += outcome.total_pins if @frames[frame - 1].modifier == :strike
-        total += outcome.ball_1_pins if @frames[frame - 1].modifier == :spare
+    @frames.each do |round_number, frame|
+      if round_number > 1
+        total += frame.total_pins if @frames[round_number - 1].modifier == :strike
+        total += frame.ball_1_pins if @frames[round_number - 1].modifier == :spare
       end
 
-      total += outcome.total_pins
+      total += frame.total_pins
     end
 
     total
