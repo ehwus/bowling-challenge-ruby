@@ -54,5 +54,13 @@ describe Player do
       player.frames[3] = double :frame, modifier: :strike, total_pins: 10
       expect(player.current_score).to eq(60)
     end
+
+    it "returns correctly after 10 strikes" do
+      player = Player.new("Partario")
+      10.times do |n|
+        player.frames[n + 1] = double :frame, modifier: :strike, total_pins: 10
+      end
+      expect(player.current_score).to eq(270)
+    end
   end
 end

@@ -21,6 +21,9 @@ class Player
       end
 
       total += frame.total_pins
+
+      p round_number
+      p total
     end
 
     total
